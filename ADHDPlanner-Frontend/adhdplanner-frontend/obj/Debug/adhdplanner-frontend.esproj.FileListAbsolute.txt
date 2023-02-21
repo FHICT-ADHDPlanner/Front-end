@@ -1,0 +1,2 @@
+C:\Users\Evalynn Kootstra\Documents\GitHub\Front-end\ADHDPlanner-Frontend\ADHDPlanner-Frontend\obj\Debug\adhdplanner-frontend.esproj.SuggestedBindingRedirects.cache
+C:\Users\Evalynn Kootstra\Documents\GitHub\Front-end\ADHDPlanner-Frontend\ADHDPlanner-Frontend\obj\Debug\adhdplanner-frontend.esproj.CoreCompileInputs.cache
