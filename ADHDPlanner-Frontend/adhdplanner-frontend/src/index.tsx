@@ -13,17 +13,15 @@ root.render(
         domain="adhd-planner.eu.auth0.com"
         clientId="XZHJ9q0P6OmyZ6XVKxwHXo5A9SLbVy0e"
         authorizationParams={{
-            redirect_uri: window.location.origin
+            redirect_uri: window.location.origin,
+            audience: "https://adhd-planner.eu.auth0.com/api/v2/",
+            scope: "read:current_user update:current_user_metadata"
         }}
     >
         <App />
     </Auth0Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
 
 
 

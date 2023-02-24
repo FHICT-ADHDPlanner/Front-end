@@ -1,28 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import LoginButton from './Components/Log-In/ReactComponent';
+import UserInformation from './Components/User/UserInformation';
 
-class App extends React.Component {
-    render() {
-        return <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <LoginButton />
-        </div>
-    };
-}
+import NavBar from './Components/Nav-Bar/Nav-Bar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const App = () => {
+    return <div className="App">
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="anonymous"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+            crossOrigin="anonymous"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+            crossOrigin="anonymous"></script>
+
+        <script>var Alert = ReactBootstrap.Alert;</script>
+        <NavBar/>
+        <UserInformation />
+    </div>
+};
 
 export default App;
