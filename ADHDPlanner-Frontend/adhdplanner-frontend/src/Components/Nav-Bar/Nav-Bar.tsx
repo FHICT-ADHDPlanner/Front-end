@@ -30,14 +30,18 @@ function NavBar() {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <NavItem className="NavItem">
-                            {isAuthenticated ? (
+
+                        <NavItem>
+                            <div className="NavItem">
+                                {isAuthenticated ? (
                                     <LogoutButton />
-                            ) : (
+                                ) : (
                                     <LoginButton />
-                            )
-                            }
+                                )
+                                }
+                            </div>
                         </NavItem>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
