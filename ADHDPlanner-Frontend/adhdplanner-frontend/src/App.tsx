@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import UserInformation from './Components/User/UserInformation';
-
 import NavBar from './Components/Nav-Bar/Nav-Bar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { GetTasks } from './API/TaskAPI'
 
 const App = () => {
+    GetTasks()
     return <div className="App">
         <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="anonymous"></script>
 
