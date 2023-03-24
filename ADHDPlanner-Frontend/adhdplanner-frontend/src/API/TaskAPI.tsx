@@ -9,8 +9,6 @@ export const GetTasks = async () => {
             }
         });
     let data:Task[] = (await res.json()) as Task[]
-    console.log(data)
-    console.log(typeof(data))
     return data;
 }
 
