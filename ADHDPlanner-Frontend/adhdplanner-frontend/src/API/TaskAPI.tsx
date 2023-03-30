@@ -1,7 +1,7 @@
 
 export const GetTasks = async () => {
     let res = await
-        fetch("https://localhost:7179" + '/api/ToDoItems', {
+        fetch("https://localhost:7179" + '/api/Tasks', {
             method: "GET",
             headers: {
                 "Access-Control-Allow-Origin": '*',

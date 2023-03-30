@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
+//import Modal from '@mui/material/Modal';
+import React from 'react';
+import { Box, Button } from '@mui/material';
+import { Modal } from 'react-bootstrap';
+//import Modal from 'react-modal';
 
 interface Task {
     name: string;
@@ -9,7 +14,7 @@ interface Task {
     dueDate: Date;
 }
 
-function TaskInput() {
+const TaskInput = () => {
     const { isAuthenticated } = useAuth0();
     const [task, setTask] = useState<Task>({
         name: '',
@@ -18,6 +23,7 @@ function TaskInput() {
         description: '',
         dueDate: new Date(),
     });
+    const [open, setOpen] = React.useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -40,38 +46,64 @@ function TaskInput() {
         console.log(task); // do something with the task object
     }
 
+    
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
         isAuthenticated ? (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name:
-                <input type="text" name="name" value={task.name} onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-                Is Complete:
-                <input type="checkbox" name="isComplete" checked={task.isComplete} onChange={handleCheckboxChange} />
-            </label>
-            <br />
-            <label>
-                Duration:
-                <input type="number" name="duration" value={task.duration} onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-                Description:
-                <textarea name="description" value={task.description} onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-                Due Date:
-                <input type="date" name="dueDate" value={task.dueDate.toISOString().substr(0, 10)} onChange={e => handleDateChange(new Date(e.target.value))} />
-            </label>
-            <br />
-            <button type="submit">Submit</button>
-            </form>) :
-            <label>Please log in</label>
-    );
+            <view>
+                <button onClick={handleOpen}>Open modal</button>
+                {/*<Modal*/}
+                {/*    open={open}*/}
+                {/*    onClose={handleClose}*/}
+                {/*>*/}
+                {/*    <div></div>*/}
+                {/*<Box>*/}
+                <Modal
+                    show={open}
+                    
+                >
+                    <Modal.Dialog>
+                        <Modal.Header>
+                            Create new task
+                        </Modal.Header>
+                        <form onSubmit={handleSubmit}>
+                        <Modal.Body>
+                        
+                            <label>
+                                Name:
+                            </label><br />
+                            <input type="text" name="name" value={task.name} onChange={handleChange} />
+                            <br />
+                            <label>
+                                Duration:                                
+                            </label><br />
+                            <input type="number" name="duration" value={task.duration} onChange={handleChange} />
+                            <br />
+                            <label>
+                                Description:                                
+                            </label><br />
+                            <textarea name="description" value={task.description} onChange={handleChange} />
+                            <br />
+                            <label>
+                                Due Date:                                
+                            </label><br />
+                            <input type="date" name="dueDate" value={task.dueDate.toISOString().substr(0, 10)} onChange={e => handleDateChange(new Date(e.target.value))} />
+                                <br />
+
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <button type="submit">Submit</button>
+                            </Modal.Footer>
+                        </form>
+                    {/*</Box>*/}
+                        {/*</Modal>*/}
+                    </Modal.Dialog>
+                </Modal>
+            </view>
+        ) : <div></div>
+    )
 }
 
 export default TaskInput;
