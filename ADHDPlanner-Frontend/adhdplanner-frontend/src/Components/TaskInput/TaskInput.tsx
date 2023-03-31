@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 //import Modal from '@mui/material/Modal';
 import React from 'react';
-import { Box, Button } from '@mui/material';
 import { Modal } from 'react-bootstrap';
 //import Modal from 'react-modal';
 
