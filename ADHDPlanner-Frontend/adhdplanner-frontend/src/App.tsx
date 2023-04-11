@@ -5,6 +5,7 @@ import NavBar from './Components/Nav-Bar/Nav-Bar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GetTasks } from './API/TaskAPI'
 import TaskInput from './Components/TaskInput/TaskInput';
+import DemoApp from './Components/Calendar/CalendarComponent';
 
 const App = () => {
     GetTasks()
@@ -24,6 +25,7 @@ const App = () => {
             <NavBar />
             <UserInformation />
             <TaskInput />
+            <DemoApp/>
         </div>
     );
 };
