@@ -1,0 +1,9 @@
+body {
+}
+
+.calendar-wrapper{
+    height: 100vh;
+    width: 75%;
+    float: right;
+    margin-right: 5%;
+}

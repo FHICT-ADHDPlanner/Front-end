@@ -1,28 +1,37 @@
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-//import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import React from 'react'
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import timeGridPlugin from '@fullcalendar/timegrid'
+import './CalendarComponent.css' 
 
 const events = [
     { title: 'Meeting', start: new Date() }
 ]
 
-export function DemoApp() {
-    return (
-            <div>
-                <h1>Demo App</h1>
-                <FullCalendar
-                    plugins={[dayGridPlugin]}
-                    initialView='dayGridMonth'
-                    weekends={false}
+class CalendarComponent extends React.Component {
+    render() {
+        return (
+            <div className= "calendar-wrapper">
+            <FullCalendar
+                    plugins={[dayGridPlugin, timeGridPlugin, bootstrap5Plugin]}
+                    headerToolbar={{
+                        left: 'prev,next,today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    }}
+                    initialView="dayGridMonth"
                     events={events}
-                    eventContent={renderEventContent}
-               //     themeSystem: 'bootstrap5'
+                    themeSystem='bootstrap5'
+                    showNonCurrentDates={false}
+                    height='100vh'
                 />
             </div>
-    )
+        )
+    }
 }
 
 // a custom render function
@@ -34,4 +43,5 @@ function renderEventContent(eventInfo: { timeText: string | number | boolean | R
         </>
     )
 }
-export default DemoApp;
+
+export default CalendarComponent;
