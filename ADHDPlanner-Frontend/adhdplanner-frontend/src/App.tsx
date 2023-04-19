@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import UserInformation from './Components/User/UserInformation';
 import NavBar from './Components/Nav-Bar/Nav-Bar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GetTasks } from './API/TaskAPI'
 import TaskInput from './Components/TaskInput/TaskInput';
-import DemoApp from './Components/Calendar/CalendarComponent';
+import CalendarComponent from './Components/Calendar/CalendarComponent';
 
 const App = () => {
     GetTasks()
@@ -23,9 +22,8 @@ const App = () => {
 
             <script>var Alert = ReactBootstrap.Alert;</script>
             <NavBar />
-            <UserInformation />
             <TaskInput />
-            <DemoApp/>
+            <CalendarComponent/>
         </div>
     );
 };
