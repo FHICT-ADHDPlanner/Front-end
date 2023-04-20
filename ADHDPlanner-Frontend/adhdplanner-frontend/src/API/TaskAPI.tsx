@@ -1,10 +1,11 @@
 export const GetTasks = async () => {
     let res = await
-        fetch("http://localhost:1001" + '/api/Task', {
+        fetch("https://localhost:1101" + '/api/Task', {
             method: "GET",
             headers: {
-                /*'Access-Control-Allow-Origin': '*'*/
-                "Content-Type": "application/json"
+               /* "Content-Type": "application/json"*/
+               /* "Access-Control-Allow-Origin": '*'*/
+                
             }
         });
     let data: Task[] = (await res.json()) as Task[]
