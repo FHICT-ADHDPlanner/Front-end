@@ -7,13 +7,21 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import './CalendarComponent.css' 
+import { EventClickArg, EventInput } from '@fullcalendar/core';
+import { Modal } from 'react-bootstrap';
+import { Task, GetTasks, GetTask } from '../../API/TaskAPI';
 
-const events = [
-    { title: 'Meeting', start: new Date() }
-]
+let events: EventInput[] = []
 
-class CalendarComponent extends React.Component {
-    render() {
+function CalendarComponent() {
+
+    const [clickedEvent, setClickedEvent] = React.useState<Task | undefined>(undefined);
+    
+
+    React.useEffect(() => {
+        loadEvents()
+    })
+
         return (
             <div className= "calendar-wrapper">
             <FullCalendar
@@ -28,20 +36,47 @@ class CalendarComponent extends React.Component {
                     themeSystem='bootstrap5'
                     showNonCurrentDates={false}
                     height='100vh'
+                    eventClick={eventClicked}
                 />
+                <Modal show={clickedEvent !== undefined}>
+                    <Modal.Dialog>
+                        <Modal.Header>
+                        Task Name
+                        </Modal.Header>
+                        <Modal.Body>
+
+
+                        </Modal.Body>
+                    </Modal.Dialog>
+
+
+
+
+                </Modal>
             </div>
         )
-    }
 }
 
 // a custom render function
-function renderEventContent(eventInfo: { timeText: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; event: { title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined } }) {
-    return (
-        <>
-            <b>{eventInfo.timeText}</b>
-            <i>{eventInfo.event.title}</i>
-        </>
-    )
+async function loadEvents()
+{
+    console.log("Test")
+    let tasks = await GetTasks();
+    console.log(tasks);
+    tasks.forEach((value) => {
+        events.push({
+            id: value.id.toString(),
+            title: value.name,
+            start: value.dueDate
+        })
+    })
 }
+
+function eventClicked(eventClick: EventClickArg)
+{
+    console.log(eventClick)
+}
+
+
 
 export default CalendarComponent;

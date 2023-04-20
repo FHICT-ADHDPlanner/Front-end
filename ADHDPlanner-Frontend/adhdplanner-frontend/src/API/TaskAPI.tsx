@@ -1,9 +1,9 @@
 export const GetTasks = async () => {
     let res = await
-        fetch("https://localhost:7179" + '/api/Tasks', {
+        fetch("http://localhost:1001" + '/api/Task', {
             method: "GET",
             headers: {
-                "Access-Control-Allow-Origin": '*',
+                /*'Access-Control-Allow-Origin': '*'*/
                 "Content-Type": "application/json"
             }
         });
@@ -11,40 +11,22 @@ export const GetTasks = async () => {
     return data;
 }
 
-export interface Task {
-    id: number,
-    name: string,
-    isComplete: boolean,
-    duration: number,
-    description: string,
-    dueDate: Date
-}
-
-export const GetTask = async () => {
+export const GetTask = async (id : number) => {
     let res = await
-        fetch("https://localhost:7179" + '/api/Tasks', {
+        fetch("http://localhost:1001" + '/api/Task/' + id, {
             method: "GET",
             headers: {
                 "Access-Control-Allow-Origin": '*',
                 "Content-Type": "application/json"
             }
         });
-    let data: Task[] = (await res.json()) as Task[]
+    let data: Task = (await res.json()) as Task
     return data;
-}
-
-export interface Task {
-    id: number,
-    name: string,
-    isComplete: boolean,
-    duration: number,
-    description: string,
-    dueDate: Date
 }
 
 export const PostTask = async () => {
     let res = await
-        fetch("https://localhost:7179" + '/api/Tasks', {
+        fetch("http://localhost:1001" + '/api/Task', {
             method: "POST",
             headers: {
                 "Access-Control-Allow-Origin": '*',
@@ -53,9 +35,9 @@ export const PostTask = async () => {
         });
 }
 
-export const PutTask = async () => {
+export const PutTask = async (id : number) => {
     let res = await
-        fetch("https://localhost:7179" + '/api/Tasks', {
+        fetch("http://localhost:1001" + '/api/Task/' + id, {
             method: "PUT",
             headers: {
                 "Access-Control-Allow-Origin": '*',
@@ -64,9 +46,9 @@ export const PutTask = async () => {
         });
 }
 
-export const DeleteTask = async () => {
+export const DeleteTask = async (id : number) => {
     let res = await
-        fetch("https://localhost:7179" + '/api/Tasks', {
+        fetch("http://localhost:1001" + '/api/Task/' + id, {
             method: "DELETE",
             headers: {
                 "Access-Control-Allow-Origin": '*',
@@ -75,3 +57,11 @@ export const DeleteTask = async () => {
         });
 }
 
+export interface Task {
+    id: number,
+    name: string,
+    isComplete: boolean,
+    duration: number,
+    description: string,
+    dueDate: Date
+}
