@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';  
 
 interface Task {
     name: string;
@@ -42,8 +42,7 @@ const TaskInput = () => {
         e.preventDefault();
         console.log(task); // do something with the task object
     }
-
-    
+     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -53,35 +52,38 @@ const TaskInput = () => {
                 <button onClick={handleOpen}>Create new Task</button>
                 <Modal
                     show={open}
-                    
+
                 >
                     <Modal.Dialog>
                         <Modal.Header>
                             Create new task
                         </Modal.Header>
                         <form onSubmit={handleSubmit}>
-                        <Modal.Body>
-                        
-                            <label>
-                                Name:
-                            </label><br />
-                            <input type="text" name="name" value={task.name} onChange={handleChange} />
-                            <br />
-                            <label>
-                                Duration:                                
-                            </label><br />
-                            <input type="number" name="duration" value={task.duration} onChange={handleChange} />
-                            <br />
-                            <label>
-                                Description:                                
-                            </label><br />
-                            <textarea name="description" value={task.description} onChange={handleChange} />
-                            <br />
-                            <label>
-                                Due Date:                                
-                            </label><br />
-                            <input type="date" name="dueDate" value={task.dueDate.toISOString().substr(0, 10)} onChange={e => handleDateChange(new Date(e.target.value))} />
+                            <Modal.Body>
+
+                                <label>
+                                    Name:
+                                </label><br />
+                                <input type="text" name="name" value={task.name} onChange={handleChange} />
                                 <br />
+                                <label>
+                                    Duration:
+                                </label><br />
+                                <input type="number" name="duration" value={task.duration} onChange={handleChange} />
+                                <br />
+                                <label>
+                                    Description:
+                                </label><br />
+                                <textarea name="description" value={task.description} onChange={handleChange} />
+                                <br />
+                                <label>
+                                    Due Date:
+                                </label><br />
+                                <input type="date" name="dueDate" value={task.dueDate.toISOString().substr(0, 10)} onChange={e => handleDateChange(new Date(e.target.value))} />
+                                <br />
+                                <label>
+                                    Start Time:
+                                </label>
 
                             </Modal.Body>
                             <Modal.Footer>
@@ -97,3 +99,7 @@ const TaskInput = () => {
 }
 
 export default TaskInput;
+
+function newDate(arg0: string): any {
+    throw new Error('Function not implemented.');
+}
