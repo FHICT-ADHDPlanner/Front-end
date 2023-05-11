@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import React from 'react';
 import { Modal } from 'react-bootstrap';  
-import TimePicker from 'react-ts-timepicker';
+import { CreateTask } from '../../API/TaskAPI';
+/*import TimePicker from 'react-ts-timepicker';*/
 
 interface Task {
     name: string;
@@ -48,6 +49,8 @@ const TaskInput = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(task); // do something with the task object
+      
+        CreateTask(task.name, false, task.duration, task.description, task.dueDate);
     }
      
     const handleOpen = () => setOpen(true);
@@ -67,7 +70,6 @@ const TaskInput = () => {
                         </Modal.Header>
                         <form onSubmit={handleSubmit}>
                             <Modal.Body>
-
                                 <label>
                                     Name:
                                 </label><br />
@@ -91,10 +93,10 @@ const TaskInput = () => {
                                 <label>
                                     Start Time:
                                 </label>
-                                <TimePicker
-                                    onChange={OnPickedTimeChange}
-                                    value={pickedTime}
-                                />
+                                {/*<TimePicker*/}
+                                {/*    onChange={OnPickedTimeChange}*/}
+                                {/*    value={pickedTime}*/}
+                                {/*/>*/}
 
                             </Modal.Body>
                             <Modal.Footer>

@@ -7,7 +7,7 @@
   "type": "chrome",
   "request": "launch",
   "url": "http://localhost:3000",
-  "webRoot": "C:\\Users\\Evalynn Kootstra\\Documents\\GitHub\\Front-end\\ADHDPlanner-Frontend\\ADHDPlanner-Frontend"
+  "webRoot": "C:\\Users\\Evaly\\Git\\Front-end\\ADHDPlanner-Frontend\\ADHDPlanner-Frontend"
 }</LaunchJsonTarget>
   </PropertyGroup>
 </Project>

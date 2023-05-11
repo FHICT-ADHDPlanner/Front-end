@@ -25,18 +25,21 @@ export const GetTask = async (id : number) => {
     return data;
 }
 
-export const PostTask = async () => {
+export const CreateTask = async (_name: string, _isComplete: boolean, _duration: number, _description: string, _dueDate: Date) =>
+{
     let res = await
-        fetch("http://localhost:1001" + '/api/Task', {
+        fetch("https://localhost:1101" + '/api/Task', {
             method: "POST",
             headers: {
+
                 "Access-Control-Allow-Origin": '*',
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify({ name: _name, isComplete: _isComplete ,duration: _duration, description: _description, dueDate: _dueDate })
         });
 }
 
-export const PutTask = async (id : number) => {
+export const UpdateTask = async (id : number) => {
     let res = await
         fetch("http://localhost:1001" + '/api/Task/' + id, {
             method: "PUT",
