@@ -19,7 +19,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: cd ADHDPlanner-Frontend/adhdplanner-frontend
-    - run: npm install --legacy-peer-deps
+    - name: Install dependencies
+      working-directory: ./admin-client
+      run: npm install --legacy-peer-deps
     - run: npm run build --if-present
 
   deployment:
