@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import React from 'react';
 import { Modal } from 'react-bootstrap';  
-import TimePicker from 'react-ts-timepicker';
+/*import TimePicker from 'react-ts-timepicker';*/
 
 interface Task {
     name: string;
@@ -91,10 +91,10 @@ const TaskInput = () => {
                                 <label>
                                     Start Time:
                                 </label>
-                                <TimePicker
-                                    onChange={OnPickedTimeChange}
-                                    value={pickedTime}
-                                />
+                                {/*<TimePicker*/}
+                                {/*    onChange={OnPickedTimeChange}*/}
+                                {/*    value={pickedTime}*/}
+                                {/*/>*/}
 
                             </Modal.Body>
                             <Modal.Footer>
