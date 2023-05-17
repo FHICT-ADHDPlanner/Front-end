@@ -21,7 +21,9 @@ jobs:
     - name: Install dependencies
       working-directory: ADHDPlanner-Frontend/adhdplanner-frontend
       run: npm install --legacy-peer-deps
-    - run: npm run build --if-present
+    - name: Build
+      working-directory: ADHDPlanner-Frontend/adhdplanner-frontend
+      run: npm run build --if-present
 
   deployment:
    name: deployment
