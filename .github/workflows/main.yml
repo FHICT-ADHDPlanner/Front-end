@@ -23,7 +23,7 @@ jobs:
       run: npm install --legacy-peer-deps
     - name: Build
       working-directory: ADHDPlanner-Frontend/adhdplanner-frontend
-      run: npm run build --if-present
+      run: CI='' npm run build -- --prod
 
   deployment:
    name: deployment
