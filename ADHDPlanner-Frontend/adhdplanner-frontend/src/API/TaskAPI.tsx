@@ -1,6 +1,6 @@
 export const GetTasks = async () => {
     let res = await
-        fetch("https://localhost:1101" + '/api/Task', {
+        fetch(process.env.REACT_APP_API_URL + '/api/Task', {
             method: "GET",
             headers: {
                /* "Content-Type": "application/json"*/
@@ -14,7 +14,7 @@ export const GetTasks = async () => {
 
 export const GetTask = async (id : number) => {
     let res = await
-        fetch("http://localhost:1001" + '/api/Task/' + id, {
+        fetch(process.env.REACT_APP_API_URL + '/api/Task/' + id, {
             method: "GET",
             headers: {
                 "Access-Control-Allow-Origin": '*',
@@ -28,7 +28,7 @@ export const GetTask = async (id : number) => {
 export const CreateTask = async (_name: string, _isComplete: boolean, _duration: number, _description: string, _dueDate: Date) =>
 {
     let res = await
-        fetch("https://localhost:1101" + '/api/Task', {
+        fetch(process.env.REACT_APP_API_URL + '/api/Task', {
             method: "POST",
             headers: {
 
@@ -41,7 +41,7 @@ export const CreateTask = async (_name: string, _isComplete: boolean, _duration:
 
 export const UpdateTask = async (id : number) => {
     let res = await
-        fetch("http://localhost:1001" + '/api/Task/' + id, {
+        fetch(process.env.REACT_APP_API_URL + '/api/Task/' + id, {
             method: "PUT",
             headers: {
                 "Access-Control-Allow-Origin": '*',
@@ -52,7 +52,7 @@ export const UpdateTask = async (id : number) => {
 
 export const DeleteTask = async (id : number) => {
     let res = await
-        fetch("http://localhost:1001" + '/api/Task/' + id, {
+        fetch(process.env.REACT_APP_API_URL + '/api/Task/' + id, {
             method: "DELETE",
             headers: {
                 "Access-Control-Allow-Origin": '*',
