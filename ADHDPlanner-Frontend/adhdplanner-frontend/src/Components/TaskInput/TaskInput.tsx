@@ -89,15 +89,6 @@ const TaskInput = () => {
                                     Due Date:
                                 </label><br />
                                 <input type="date" name="dueDate" value={task.dueDate.toISOString().substr(0, 10)} onChange={e => handleDateChange(new Date(e.target.value))} />
-                                <br />
-                                <label>
-                                    Start Time:
-                                </label>
-                                {/*<TimePicker*/}
-                                {/*    onChange={OnPickedTimeChange}*/}
-                                {/*    value={pickedTime}*/}
-                                {/*/>*/}
-
                             </Modal.Body>
                             <Modal.Footer>
                                 <button type="submit">Submit</button>

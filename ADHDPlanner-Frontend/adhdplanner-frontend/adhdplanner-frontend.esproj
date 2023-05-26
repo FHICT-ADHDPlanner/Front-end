@@ -12,6 +12,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\Components\SideBar\" />
     <Folder Include="src\Components\User\" />
   </ItemGroup>
 </Project>
