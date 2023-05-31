@@ -11,6 +11,7 @@ import { EventClickArg, EventInput } from '@fullcalendar/core';
 import { Modal } from 'react-bootstrap';
 import { Task, GetTasks, GetTask } from '../../API/TaskAPI';
 import { INITIAL_EVENTS } from './InitialEvents';
+import { useAuth0 } from "@auth0/auth0-react";
 
 let events: EventInput[] = []
 
@@ -18,6 +19,7 @@ function CalendarComponent() {
 
     const [clickedEvent, setClickedEvent] = React.useState<Task | undefined>(undefined);
     const [events, setEvents] = React.useState<{ id: string, title: string, start: Date }[]>([]);
+    const { isAuthenticated } = useAuth0();
 
 
     React.useEffect(() => {
@@ -47,33 +49,39 @@ function CalendarComponent() {
     }
 
     return (
-        <div className="calendar-wrapper">
-            <FullCalendar
-                plugins={[dayGridPlugin, timeGridPlugin, bootstrap5Plugin]}
-                headerToolbar={{
-                    left: 'prev,next,today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                }}
-                initialView="dayGridMonth"
-                events={events}
-                themeSystem='bootstrap5'
-                showNonCurrentDates={false}
-                height='100vh'
-                eventClick={eventClicked}
-            />
-            <Modal show={clickedEvent !== undefined}>
-                <Modal.Dialog>
-                    <Modal.Header>
-                        Task Name
-                    </Modal.Header>
-                    <Modal.Body>
+        isAuthenticated ? (
+            <div className="calendar-wrapper">
+                <FullCalendar
+                    plugins={[dayGridPlugin, timeGridPlugin, bootstrap5Plugin]}
+                    headerToolbar={{
+                        left: 'prev,next,today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    }}
+                    initialView="dayGridMonth"
+                    events={events}
+                    themeSystem='bootstrap5'
+                    showNonCurrentDates={false}
+                    height='100vh'
+                    eventClick={eventClicked}
+                />
+                <Modal show={clickedEvent !== undefined}>
+                    <Modal.Dialog>
+                        <Modal.Header>
+                            Task Name
+                        </Modal.Header>
+                        <Modal.Body>
 
 
-                    </Modal.Body>
-                </Modal.Dialog>
-            </Modal>
-        </div>
+                        </Modal.Body>
+                    </Modal.Dialog>
+                </Modal>
+            </div>
+        ) : (
+            <div>
+                <h1>Please log in</h1>
+            </div>
+        )
     )
 }
 
