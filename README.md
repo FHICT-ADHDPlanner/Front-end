@@ -11,6 +11,7 @@ Before starting up the software, ensure that the following software is installed
 > cd adhdplanner-frontend
 3. Install the project dependencies:
 > npm install 
+> If the npm install fails, try " npm install  --peer-legacy-deps "
 4. Run the project
 > Click run 
 
